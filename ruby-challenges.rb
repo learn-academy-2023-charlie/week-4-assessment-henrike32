@@ -4,6 +4,11 @@
 # --------------------1) Create a method that takes in a number and determines if the number is even or odd. Use the test variables provided.
 
 reposts1 = 7
+
+if reposts1 % 2 == 0 
+    return "This number is even"
+end
+p reposts1
 # Expected output: '7 is odd'
 reposts2 = 42
 # Expected output: '42 is even'
