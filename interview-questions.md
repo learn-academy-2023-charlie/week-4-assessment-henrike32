@@ -23,7 +23,7 @@ Researched answer: A Float is a datatype used for more accurate values and Integ
 
 3. Ruby has an implicit return. What does that mean?
 
-Your answer:
+Your answer: It means you do not need to input a 'return' statement in Ruby to get the expected returning output.
 
 Researched answer:
 
