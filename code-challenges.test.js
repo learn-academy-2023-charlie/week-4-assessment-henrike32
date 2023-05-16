@@ -51,10 +51,6 @@ console.log(rColors(colors2));
 
 // describe('votesCount', () => {
 //   it('returns the voting end tally', () => {
-  const votes1 = { upVotes: 13, downVotes: 2 };
-// Expected output: 11
-const votes2 = { upVotes: 2, downVotes: 33 };
-// Expected output: -31
 //     expect(votesCount(votes1)).toEqual(11);
 //     expect(votesCount(votes2)).toEqual(-31);
 //   });
@@ -73,27 +69,39 @@ const votesCount = (votes) => {
   const { upVotes, downVotes } = votes;
   return upVotes - downVotes;
 };
-
+const votes1 = { upVotes: 13, downVotes: 2 };
+// Expected output: 11✅
+const votes2 = { upVotes: 2, downVotes: 33 };
+// Expected output: -31✅
 console.log(votesCount(votes1));
 console.log(votesCount(votes2));
 // --------------------3) Create a function that takes in two arrays as arguments and returns one array with no duplicate values. STRETCH: Use the spread operator to pass in a dynamic number of arguments.
 // a) Create a test with an expect statement using the variables provided.
 
-describe(dataTypeZ, () => {
-  it("returns thed ata types", () => {
-    const dataTypesArray1 = ["array", "object", "number", "string", "Boolean"]
-// Expected output: ["array", "object", "number", "string", "Boolean", "null", "undefined"]
-    const dataTypesArray2 = ["string", "null", "Boolean", "string", "undefined"]
-// Expected output: ["array", "object", "number", "string", "Boolean", "null", "undefined"]
-    expect(dataTypesArray1()).toEqual(["array", "object", "number", "string", "Boolean", "null", "undefined"])
-    expect(dataTypesArray2()).toEqual(["array", "object", "number", "string", "Boolean", "null", "undefined"])
-  })
-})
+// describe(dataTypeZ, () => {
+//   it("returns thed ata types", () => {
+//     expect(dataTypeZ(dataTypesArray1)).toEqual(["array", "object", "number", "string", "Boolean", "null", "undefined"])
+//     expect(dataTypeZ(dataTypesArray2)).toEqual(["array", "object", "number", "string", "Boolean", "null", "undefined"])
+//   })
+// })
 // ReferenceError: dataTypez is not defined
 // b) Create the function that makes the test pass.
+const dataTypesArray1 = ["array", "object", "number", "string", "Boolean"]
+const dataTypesArray2 = ["string", "null", "Boolean", "string", "undefined"]
+// Expected output: ["array", "object", "number", "string", "Boolean", "null", "undefined"]
+const noDuupes = (array) => {
+  let checkArray = []
+  for (let i =0; i< array.length; i++)
+  if (dataTypesArray1[i] === dataTypesArray2[i])
+  console.log(checkArray(array));
+}
+const checkArray = (dataTypesArray1.concat(dataTypesArray2), dataTypesArray1 - dataTypesArray1);
+
+console.log(noDuupes[array]);
 
 // pseudocode ->
 // input -> takes in two arrays
 // output ->  one array with no duplicate values
 // process ->
-// 
+// create a function named noDupes
+// iterate through the arrays and compare them , subtracting one from another
