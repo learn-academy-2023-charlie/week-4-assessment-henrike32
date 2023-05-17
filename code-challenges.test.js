@@ -11,12 +11,12 @@
 // a) Create a test with an expect statement using the variable provided.
 // HINT: Check out this resource: https://jestjs.io/docs/expect#expectarraycontainingarray
 
-// describe( rColors, () => {
-//   it("returns a gencolor sequence", () => {
-//     expect(colors1).toEqual(expect.arrayContaining(colors1));
-//     expect(colors2).toEqual(expect.arrayContaining(colors2));
-//   });
-// })
+describe( rColors, () => {
+  it("returns a gencolor sequence", () => {
+    expect(colors1).toEqual(expect.arrayContaining("yellow", "blue", "pink", "green"));
+    expect(colors2).toEqual(expect.arrayContaining("chartreuse", "indigo", "periwinkle", "ochre", "aquamarine", "saffron"));
+  });
+})
 //  ReferenceError: randomColors is not defined✅
 // b) Create the function that makes the test pass.
 
@@ -31,6 +31,7 @@
 // adding the j variable you are generating a random index within the range of 0 and i
 // swapping elements at index j with index i using the [arr[i], arr[j] = [arr[j], arr[i]];
 // returning the shuffled array
+// Option 1:
 function rColors(arr) {
   arr.shift();
   for (let i = arr.length - 1; i > 0; i--) {
@@ -43,18 +44,33 @@ const colors1 = ["purple", "blue", "green", "yellow", "pink"];
 //Expected output example (can be a different order): ["yellow", "blue", "pink", "green"]✅
 const colors2 = ["chartreuse", "indigo", "periwinkle", "ochre", "aquamarine", "saffron"];
 //Expected output example (can be a different order): ["saffron", "aquamarine", "periwinkle", "indigo", "ochre"]✅
-console.log(rColors(colors1));
-console.log(rColors(colors2));
+
+// Option 2 from the explanations with Chris/Scott:
+
+// describe('shuffler', () => {
+//   it('takes in an array , return the first item from the array shuffles the remaining content') => {
+//     const colors1 = ["purple", "blue", "green", "yellow", "pink"];
+//     //Expected output example (can be a different order): ["yellow", "blue", "pink", "green"]✅
+//     const colors2 = ["chartreuse", "indigo", "periwinkle", "ochre", "aquamarine", "saffron"];
+//     //Expected output example (can be a different order): ["saffron", "aquamarine", "periwinkle", "indigo", "ochre"]✅
+//     expect(colors1).toEqual(expect.arrayContaining("yellow", "blue", "pink", "green"));
+//     expect(colors2).toEqual(expect.arrayContaining("chartreuse", "indigo", "periwinkle", "ochre", "aquamarine", "saffron"));
+//   })
+// })
+// const shuffler = (array) => {
+//   return array.slice(1).sort(() => Math.random() - 0.5)
+// }
+
 // --------------------2) Create a function that takes in an object that contains up votes and down votes and returns the end tally.
 
 // a) Create a test with expect statements for each of the variables provided.
 
-// describe('votesCount', () => {
-//   it('returns the voting end tally', () => {
-//     expect(votesCount(votes1)).toEqual(11);
-//     expect(votesCount(votes2)).toEqual(-31);
-//   });
-// });
+describe('votesCount', () => {
+  it('returns the voting end tally', () => {
+    expect(votesCount(votes1)).toEqual(11);
+    expect(votesCount(votes2)).toEqual(-31);
+  });
+});
 // ReferenceError: votesCount is not defined✅
 // b) Create the function that makes the test pass.
 
@@ -73,26 +89,45 @@ const votes1 = { upVotes: 13, downVotes: 2 };
 // Expected output: 11✅
 const votes2 = { upVotes: 2, downVotes: 33 };
 // Expected output: -31✅
-console.log(votesCount(votes1));
-console.log(votesCount(votes2));
+
+
+//  Option 2 , by Chris and Kyle :
+
+// describe('simpMath', () => {
+//   it('returns the voting end tally', () => {
+//     const votes1 = { upVotes: 13, downVotes: 2 };
+//     // Expected output: 11✅
+//     const votes2 = { upVotes: 2, downVotes: 33 };
+//     // Expected output: -31✅
+//     expect(votesCount(votes1)).toEqual(11);
+//     expect(votesCount(votes2)).toEqual(-31);
+//   });
+// });
+
+// const simpMath = (obj) => {
+//   return obj['upVotes'] - obj['downVotes']
+// }
+
+// // Option 3:
+// const simpMath = ({upVotes, downVotes}) => {
+//   return upVotes - downVotes
+// }
+
+
 // --------------------3) Create a function that takes in two arrays as arguments and returns one array with no duplicate values. STRETCH: Use the spread operator to pass in a dynamic number of arguments.
 // a) Create a test with an expect statement using the variables provided.
 
-// describe(dataTypeZ, () => {
-//   it("returns thed ata types", () => {
-//     expect(dataTypeZ(dataTypesArray1)).toEqual(["array", "object", "number", "string", "Boolean", "null", "undefined"])
-//     expect(dataTypeZ(dataTypesArray2)).toEqual(["array", "object", "number", "string", "Boolean", "null", "undefined"])
-//   })
-// })
+describe(dataTypeZ, () => {
+  it("returns one array with no duplicate values", () => {
+    const dataTypesArray1 = ["array", "object", "number", "string", "Boolean"]
+    const dataTypesArray2 = ["string", "null", "Boolean", "string", "undefined"]
+    // Expected output: ["array", "object", "number", "string", "Boolean", "null", "undefined"]✅
+    expect(dataTypeZ(dataTypesArray1,dataTypesArray2).toEqual(["array", "object", "number", "string", "Boolean", "null", "undefined"])
+  })
+})
 // ReferenceError: dataTypez is not defined✅
 // b) Create the function that makes the test pass.
-const dataTypesArray1 = ["array", "object", "number", "string", "Boolean"]
-const dataTypesArray2 = ["string", "null", "Boolean", "string", "undefined"]
-// Expected output: ["array", "object", "number", "string", "Boolean", "null", "undefined"]✅
-let arr = dataTypesArray1.concat(dataTypesArray2); 
-// console.log(arr);
-let unique = arr.filter((value, index) => arr.indexOf(value) === index);
-console.log(unique);
+
 // pseudocode ->
 // input -> takes in two arrays
 // output ->  one array with no duplicate values
@@ -102,6 +137,10 @@ console.log(unique);
 // and executing a callback function on each element and  the callback takes in two parameters 'value' and 'index' and
 // the arrow function checks if the current 'value''s first occurrence index 'arr.indexOf(value)' is equal to the current 'index'
 // If the condition is true, the item is included in the unique array 
+let arr = dataTypesArray1.concat(dataTypesArray2); 
+// console.log(arr);
+let unique = arr.filter((value, index) => arr.indexOf(value) === index);
+console.log(unique);
 
 // quick demo on how the function will compare the values and indexes , it took me some time to understand but here it is:
 // ['array', 'object', 'number',  'string', 'Boolean', 'string', 'null', 'Boolean', 'string', 'undefined']
@@ -110,3 +149,22 @@ console.log(unique);
 //    0          1        2           3         4        3          6        4         3           9
 
 // so the ones that doesn't match the initial value:index pair will be left out of the new array
+
+
+// Option 2 by Chris and Bea:
+
+// describe(noDupes, () => {
+//   it("returns one array with no duplicate values", () => {
+//     const dataTypesArray1 = ["array", "object", "number", "string", "Boolean"]
+//     const dataTypesArray2 = ["string", "null", "Boolean", "string", "undefined"]
+//     // Expected output: ["array", "object", "number", "string", "Boolean", "null", "undefined"]✅
+//     expect(dataTypeZ(dataTypesArray1, dataTypesArray2)).toEqual(["array", "object", "number", "string", "Boolean", "null", "undefined"])
+//   })
+// })
+// const noDupes = (array1, array2 ) => {
+//   const combined = array1.concat(array2)
+//   return combined.filter((value, index) => combined.indexOf(value) === index)
+// }
+
+
+
