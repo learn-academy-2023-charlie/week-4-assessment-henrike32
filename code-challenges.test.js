@@ -149,8 +149,24 @@ console.log(unique);
 //    0          1        2           3         4        3          6        4         3           9
 
 // so the ones that doesn't match the initial value:index pair will be left out of the new array
-
-
+  
+//   STRETCH by Chris:
+  
+  
+// describe(noDupes, () => {
+//  it("returns one array with no duplicate values", () => {
+//    const dataTypesArray1 = ["array", "object", "number", "string", "Boolean"]
+//    const dataTypesArray2 = ["string", "null", "Boolean", "string", "undefined"]
+//    // Expected output: ["array", "object", "number", "string", "Boolean", "null", "undefined"]✅
+//    expect(dataTypeZ(dataTypesArray1, dataTypesArray2)).toEqual(["array", "object", "number", "string", "Boolean", "null", "undefined"])
+//   })
+// })
+  
+//   const noDupes = (...arrays) => {
+//     let flatennedArray = array.flat()
+//     return [...new Set(flattenedArray)]
+//   }   
+ 
 // Option 2 by Chris and Bea:
 
 // describe(noDupes, () => {
