@@ -17,7 +17,7 @@
 //     expect(colors2).toEqual(expect.arrayContaining(colors2));
 //   });
 // })
-//  ReferenceError: randomColors is not defined
+//  ReferenceError: randomColors is not defined✅
 // b) Create the function that makes the test pass.
 
 // pseudocode ->
@@ -55,7 +55,7 @@ console.log(rColors(colors2));
 //     expect(votesCount(votes2)).toEqual(-31);
 //   });
 // });
-// ReferenceError: votesCount is not defined
+// ReferenceError: votesCount is not defined✅
 // b) Create the function that makes the test pass.
 
 // pseudocode ->
@@ -84,24 +84,29 @@ console.log(votesCount(votes2));
 //     expect(dataTypeZ(dataTypesArray2)).toEqual(["array", "object", "number", "string", "Boolean", "null", "undefined"])
 //   })
 // })
-// ReferenceError: dataTypez is not defined
+// ReferenceError: dataTypez is not defined✅
 // b) Create the function that makes the test pass.
 const dataTypesArray1 = ["array", "object", "number", "string", "Boolean"]
 const dataTypesArray2 = ["string", "null", "Boolean", "string", "undefined"]
-// Expected output: ["array", "object", "number", "string", "Boolean", "null", "undefined"]
-const noDuupes = (array) => {
-  let checkArray = []
-  for (let i =0; i< array.length; i++)
-  if (dataTypesArray1[i] === dataTypesArray2[i])
-  console.log(checkArray(array));
-}
-const checkArray = (dataTypesArray1.concat(dataTypesArray2), dataTypesArray1 - dataTypesArray1);
-
-console.log(noDuupes[array]);
-
+// Expected output: ["array", "object", "number", "string", "Boolean", "null", "undefined"]✅
+let arr = dataTypesArray1.concat(dataTypesArray2); 
+// console.log(arr);
+let unique = arr.filter((value, index) => arr.indexOf(value) === index);
+console.log(unique);
 // pseudocode ->
 // input -> takes in two arrays
 // output ->  one array with no duplicate values
 // process ->
-// create a function named noDupes
-// iterate through the arrays and compare them , subtracting one from another
+// create a new array using the .concat method, which will merge the two arrays we have
+// create another array but this time using the .filter method to iterate through each element of the original array
+// and executing a callback function on each element and  the callback takes in two parameters 'value' and 'index' and
+// the arrow function checks if the current 'value''s first occurrence index 'arr.indexOf(value)' is equal to the current 'index'
+// If the condition is true, the item is included in the unique array 
+
+// quick demo on how the function will compare the values and indexes , it took me some time to understand but here it is:
+// ['array', 'object', 'number',  'string', 'Boolean', 'string', 'null', 'Boolean', 'string', 'undefined']
+//    0          1        2           3         4        5          6        7         8           9
+
+//    0          1        2           3         4        3          6        4         3           9
+
+// so the ones that doesn't match the initial value:index pair will be left out of the new array
